@@ -1,9 +1,5 @@
-// webpack.prod.js
-
-const path = require('path');
-const { merge } = require('webpack-merge');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const common = require('./webpack.common');
+const { merge } = require('webpack-merge');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -24,11 +20,4 @@ module.exports = merge(common, {
       },
     ],
   },
-  /* Tambahkan penerapan plugin di bawah di berkas ini */
-  plugins: [
-    new WorkboxWebpackPlugin.InjectManifest({
-      swSrc: path.resolve(__dirname, 'src/scripts/sw.js'),
-      swDest: './sw.bundle.js',
-    }),
-  ],
 });
